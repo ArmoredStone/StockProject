@@ -14,10 +14,9 @@ public class AccountDAO {
 	static Logger logger = Logger.getLogger(AccountDAO.class.getName());
 
 	public static Account getAccount(String email, String pass) throws SQLException {
-		
-		
+
 		Account account = new Account();
-		account.email="";
+		account.email = "";
 		Connection con = null;
 		PreparedStatement pStatement = null;
 		ResultSet rSet = null;
@@ -28,6 +27,48 @@ public class AccountDAO {
 			e.printStackTrace();
 		}
 		String sql = "SELECT * FROM accounts WHERE email='" + email + "' AND pass='" + pass + "'";
+		try {
+			pStatement = con.prepareStatement(sql);
+			rSet = pStatement.executeQuery();
+			while (rSet.next()) {
+				account.login = rSet.getString("login");
+				account.pass = rSet.getString("pass");
+				account.phone = rSet.getString("phone");
+				account.email = rSet.getString("email");
+				account.address = rSet.getString("address");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rSet != null) {
+				rSet.close();
+			}
+			if (pStatement != null) {
+				pStatement.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+
+		}
+
+		return account;
+	}
+
+	public static Account getAccountByEmail(String email) throws SQLException {
+
+		Account account = new Account();
+		account.email = "";
+		Connection con = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+
+		try {
+			con = ConnectionToDB.getConnectionToDB();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String sql = "SELECT * FROM accounts WHERE email='" + email + "'";
 		try {
 			pStatement = con.prepareStatement(sql);
 			rSet = pStatement.executeQuery();

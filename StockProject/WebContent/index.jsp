@@ -46,6 +46,7 @@
 				<th>size H</th>
 				<th>size W</th>
 				<th>description</th>
+				<th>owner</th>
 			</tr>
 			<tr>
 				<td>name</td>
@@ -57,6 +58,7 @@
 				<td>size H</td>
 				<td>size W</td>
 				<td>description</td>
+				<td>owner</td>
 			</tr>
 		</table>
 	</div>

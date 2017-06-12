@@ -28,7 +28,7 @@ include file ='/css/indexStyle.css'%>
 	CONGRATS
 	<%=session.getAttribute("login")%>, YOU LOGGED IN
 	<jsp:useBean id="goodsForAcc" scope="request"
-		class="privateOrder.beans.AccountBean" />
+		class="privateOrder.beans.AccountInfoBean" />
 </div>
 <div id="goods-list" style="height: 59px">
 	<table>
@@ -44,7 +44,7 @@ include file ='/css/indexStyle.css'%>
 			<th>description</th>
 		</tr>
 		<%
-			ArrayList<Good> goods = goodsForAcc.getGoodsForAccount((String) session.getAttribute("email"));
+			ArrayList<Good> goods = goodsForAcc.getGoodsByAcc((String) session.getAttribute("email"));
 			for (int i = 0; i < goods.size(); i++) {
 		%>
 		<tr>

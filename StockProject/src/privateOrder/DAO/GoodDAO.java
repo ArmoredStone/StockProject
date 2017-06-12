@@ -239,52 +239,52 @@ public class GoodDAO {
 
 	}
 
-//	public static ArrayList<Good> getGoodsByFiltre(String filtre) throws SQLException {
-//		ArrayList<Good> goods = new ArrayList<>();
-//		Connection con = null;
-//		PreparedStatement pStatement = null;
-//		ResultSet rSet = null;
-//		try {
-//			con = ConnectionToDB.getConnectionToDB();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		String sql = "SELECT * FROM goods" + filtre;
-//
-//		try {
-//			pStatement = con.prepareStatement(sql);
-//			rSet = pStatement.executeQuery();
-//			while (rSet.next()) {
-//				Good good = new Good();
-//				good.setId(rSet.getInt("id"));
-//				good.setName(rSet.getString("name"));
-//				good.setMaker(rSet.getString("maker"));
-//				good.setGroupe(rSet.getString("groupe"));
-//				good.setCode(rSet.getString("code"));
-//				good.setDescription(rSet.getString("description"));
-//				good.setAccOwner(rSet.getString("accowner"));
-//				good.setSizeL(rSet.getInt("sizel"));
-//				good.setSizeH(rSet.getInt("sizeh"));
-//				good.setSizeW(rSet.getInt("sizew"));
-//				good.setPrice(rSet.getInt("price"));
-//				goods.add(good);
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			if (con != null) {
-//				con.close();
-//			}
-//			if (pStatement != null) {
-//				pStatement.close();
-//			}
-//			if (rSet != null) {
-//				rSet.close();
-//			}
-//		}
-//		return goods;
-//
-//	}
+	public static ArrayList<Good> getGoodsByFiltre(String filtre) throws SQLException {
+		ArrayList<Good> goods = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pStatement = null;
+		ResultSet rSet = null;
+		try {
+			con = ConnectionToDB.getConnectionToDB();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String sql = "SELECT * FROM goods" + filtre;
+
+		try {
+			pStatement = con.prepareStatement(sql);
+			rSet = pStatement.executeQuery();
+			while (rSet.next()) {
+				Good good = new Good();
+				good.setId(rSet.getInt("id"));
+				good.setName(rSet.getString("name"));
+				good.setMaker(rSet.getString("maker"));
+				good.setGroupe(rSet.getString("groupe"));
+				good.setCode(rSet.getString("code"));
+				good.setDescription(rSet.getString("description"));
+				good.setAccOwner(rSet.getString("accowner"));
+				good.setSizeL(rSet.getInt("sizel"));
+				good.setSizeH(rSet.getInt("sizeh"));
+				good.setSizeW(rSet.getInt("sizew"));
+				good.setPrice(rSet.getInt("price"));
+				goods.add(good);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+			if (pStatement != null) {
+				pStatement.close();
+			}
+			if (rSet != null) {
+				rSet.close();
+			}
+		}
+		return goods;
+
+	}
 
 }
